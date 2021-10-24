@@ -122,6 +122,10 @@ input[type="number"]::-webkit-outer-spin-button {
   justify-content: center;
   cursor: pointer;
   box-shadow: 0 3px 50px rgba(0, 0, 0, 0.16);
+  @include breakpoint (xlr){
+    top: 50%;
+    transform: translateY(-50%);
+  }
   @include media-breakpoint-down(sm){
     width: 35px;
     height: 35px;
@@ -137,9 +141,6 @@ input[type="number"]::-webkit-outer-spin-button {
   }
   &.bannerPrev {
     left: 2%;
-    @include breakpoint (xlr){
-      left: 0%;
-    }
     svg {
       transform: rotate(180deg);
     }
@@ -171,7 +172,7 @@ input[type="number"]::-webkit-outer-spin-button {
   .logoWrapper {
     img {
       height: 90px;
-      @include media-breakpoint-down(sm){
+      @include media-breakpoint-down(md){
         margin: 0 auto;
         display: block;
       }
@@ -222,14 +223,21 @@ input[type="number"]::-webkit-outer-spin-button {
 
 // ++++++++++++++++++++ Banner ++++++++++++++++++++++ //
 .bannerWrapper{
+  position: relative;
   .banner{
     margin-bottom: 0;
     .bannerItem{
       img{
         width: 100%;
-        height: calc(100vh - 90px);
+        height: 500px;
         object-fit: cover;
         object-position: center;
+        @include media-breakpoint-down(md){
+          height: 350px;
+        }
+        @include media-breakpoint-down(sm){
+          height: 200px;
+        }
       }
     }
   }
@@ -239,6 +247,9 @@ input[type="number"]::-webkit-outer-spin-button {
   padding: 80px 0 100px;
   background: color(snow-white);
   .content{
+    @include media-breakpoint-down(md){
+      margin-bottom: 45px;
+    }
     .title{
       color: color(secondary);
       text-align: left;
@@ -295,6 +306,9 @@ input[type="number"]::-webkit-outer-spin-button {
       height: 400px;
       object-fit: cover;
       object-position: center;
+      @include media-breakpoint-down(sm){
+        width: 90%;
+      }
     }
     .imgTwo{
       position: absolute;
@@ -315,6 +329,9 @@ input[type="number"]::-webkit-outer-spin-button {
     padding: 35px 27px;
     min-height: 475px;
     box-shadow: $boxShadowDark;
+    @include media-breakpoint-down(md){
+      min-height: auto;
+    }
     h3{
       color: $white;
     }
@@ -327,6 +344,11 @@ input[type="number"]::-webkit-outer-spin-button {
     max-width: 100%;
     height: 475px;
     object-fit: cover;
+    @include media-breakpoint-down(md){
+      height: 350px;
+      width: 100%;
+      margin: 25px 0;
+    }
   }
 }
 // ++++++++++++++++++++ Courses ++++++++++++++++++++++ //
@@ -340,16 +362,62 @@ input[type="number"]::-webkit-outer-spin-button {
     border-radius: 6px;
     background: $white;
     margin-bottom: 35px;
+    min-height: 255px;
+    @include breakpoint (xlr){
+      min-height: 285px;
+    }
+    @include media-breakpoint-down(md){
+      min-height: auto;
+    }
+    display: flex;
+    flex-wrap: wrap;
+    .imgBlock{
+      max-width: 45%;
+      flex-basis: 45%;
+      position: relative;
+      @include media-breakpoint-down(sm){
+        max-width: 100%;
+        flex-basis: 100%;
+      }
+    }
     .coverImg{
-      max-width: 100%;
-      height: 250px;
+      position: absolute;
       width: 100%;
+      height: 100%;
       object-fit: cover;
+      @include media-breakpoint-down(sm){
+        position: relative;
+        height: 250px;
+      }
     }
     .content{
+      max-width: 55%;
+      flex-basis: 55%;
       padding: 25px 30px 35px;
+      @include media-breakpoint-down(sm){
+        max-width: 100%;
+        flex-basis: 100%;
+      }
       h3{
+        font-size: 25px;
         text-transform: capitalize;
+      }
+      .link{
+        display: flex;
+        font-size: 15px;
+        align-items: center;
+        color: color(primary);
+        margin-top: 12px;
+        svg{
+          transition: all 0.4s ease;
+          margin-left: 5px;
+        }
+        &:hover{
+          svg{
+            transition: all 0.4s ease;
+            margin-left: 8px;
+          }
+        }
       }
     }
     ul{
@@ -371,6 +439,9 @@ input[type="number"]::-webkit-outer-spin-button {
     position: relative;
     overflow: hidden;
     box-shadow: $boxShadowDark;
+    @include media-breakpoint-down(md){
+      margin-bottom: 25px;
+    }
     .coverImg{
       width: 100%;
       height: 200px;
@@ -386,39 +457,42 @@ input[type="number"]::-webkit-outer-spin-button {
       p{
         color:$white;
       }
-      .locClDateWrap{
-        display: flex;
-        align-items: center;
-        .block{
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-right: 12px;
-          img{
-            filter: invert(1);
-            width: auto;
-            height: 18px;
-            margin-right: 8px;
-          }
-          p{
-            margin: 0;
-            font-size: 14px;
-            color: $white;
-          }
-        }
-      }
+      // .locClDateWrap{
+      //   display: flex;
+      //   align-items: center;
+      //   .block{
+      //     display: flex;
+      //     align-items: center;
+      //     justify-content: center;
+      //     margin-right: 12px;
+      //     img{
+      //       filter: invert(1);
+      //       width: auto;
+      //       height: 18px;
+      //       margin-right: 8px;
+      //     }
+      //     p{
+      //       margin: 0;
+      //       font-size: 14px;
+      //       color: $white;
+      //     }
+      //   }
+      // }
     }
   }
   .event{
     margin-bottom: 20px;
     .coverImg{
       width: 100%;
-      height: 180px;
+      height: 163px;
       border-radius: 6px;
       object-fit: cover;
     }
     .content{
       padding-left: 12px;
+      @include media-breakpoint-down(sm){
+        padding-left: 0;
+      }
       .locClDateWrap{
         display: flex;
         align-items: center;
@@ -440,6 +514,10 @@ input[type="number"]::-webkit-outer-spin-button {
       }
     }
   }
+}
+.corporationWrap{
+  padding: 80px 0;
+  background: color(snow-white);
 }
 // ++++++++++++++++++++ Footer ++++++++++++++++++++++ //
 footer{
